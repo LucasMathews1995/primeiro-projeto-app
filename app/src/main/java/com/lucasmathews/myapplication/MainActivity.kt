@@ -3,7 +3,9 @@ package com.lucasmathews.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.viewpager2.widget.ViewPager2
 import com.lucasmathews.myapplication.databinding.ActivityMainBinding
+import com.lucasmathews.myapplication.fragment.TabAdapter
 
 class MainActivity : AppCompatActivity() {
     private var clicked:Boolean = false
@@ -15,6 +17,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         configurarView ()
+        setupTabs()
+
+    }
+
+    private fun setupTabs() {
+        val tabsAdapter = TabAdapter(this)
+        binding.vpViewPager.adapter = tabsAdapter
+
 
     }
 
@@ -22,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding.button.visibility = View.VISIBLE
         binding.button2.visibility = View.GONE
      binding.textView.visibility = View.GONE
+
         binding.button.setOnClickListener {
 
             setVisibilty(clicked)
